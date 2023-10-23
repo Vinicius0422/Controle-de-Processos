@@ -3,4 +3,4 @@ CREATE TABLE IF NOT EXISTS tipo_conta (
    	nome VARCHAR(50) NOT NULL,
     PRIMARY KEY (id),
     UNIQUE (nome)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
