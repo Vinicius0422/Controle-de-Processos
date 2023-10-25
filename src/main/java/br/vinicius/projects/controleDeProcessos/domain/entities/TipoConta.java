@@ -6,13 +6,13 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "nacionalidade")
+@Table(name = "tipo_conta")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Nacionalidade {
+public class TipoConta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,6 @@ public class Nacionalidade {
     @Column(length = 50, nullable = false, unique = true)
     private String nome;
 
-    @OneToMany(mappedBy = "nacionalidade_id")
+    @OneToMany(mappedBy = "tipoConta_id")
     private List<Reclamante> reclamantes;
-
 }

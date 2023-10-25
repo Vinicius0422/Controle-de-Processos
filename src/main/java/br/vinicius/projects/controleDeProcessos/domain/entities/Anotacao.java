@@ -3,25 +3,28 @@ package br.vinicius.projects.controleDeProcessos.domain.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.sql.Date;
 
 @Entity
-@Table(name = "nacionalidade")
+@Table(name = "anotacao")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Nacionalidade {
+public class Anotacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 50, nullable = false, unique = true)
-    private String nome;
+    @Column(name = "data_anotacao")
+    private Date dataAnotacao;
 
-    @OneToMany(mappedBy = "nacionalidade_id")
-    private List<Reclamante> reclamantes;
+    @Column(name = "note")
+    private String anotacao;
 
+    @ManyToOne
+    @JoinColumn(name = "processo_id")
+    private Processo processo_id;
 }
