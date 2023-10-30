@@ -23,4 +23,9 @@ public class EstadoCivil {
 
     @OneToMany(mappedBy = "estadoCivil_id")
     private List<Reclamante> reclamantes;
+
+    public EstadoCivil(Long id, String nome){
+        this.id = id;
+        this.nome = nome;
+    }
 }

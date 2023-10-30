@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS anotacao (
+    id BIGINT UNSIGNED AUTO_INCREMENT NOT NULL,
+    data_anotacao DATE NOT NULL,
+    note VARCHAR(255) NOT NULL,
+    processo_id BIGINT UNSIGNED NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (processo_id) REFERENCES processo (id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;

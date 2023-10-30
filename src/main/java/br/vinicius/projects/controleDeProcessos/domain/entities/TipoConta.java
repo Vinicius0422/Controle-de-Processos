@@ -23,4 +23,9 @@ public class TipoConta {
 
     @OneToMany(mappedBy = "tipoConta_id")
     private List<Reclamante> reclamantes;
+
+    public TipoConta(Long id, String nome){
+        this.id = id;
+        this.nome = nome;
+    }
 }
