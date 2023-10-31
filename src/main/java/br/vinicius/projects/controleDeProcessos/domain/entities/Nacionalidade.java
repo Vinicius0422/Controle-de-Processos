@@ -24,4 +24,8 @@ public class Nacionalidade {
     @OneToMany(mappedBy = "nacionalidade_id")
     private List<Reclamante> reclamantes;
 
+    public Nacionalidade (Long id, String nome){
+        this.id = id;
+        this.nome = nome;
+    }
 }
