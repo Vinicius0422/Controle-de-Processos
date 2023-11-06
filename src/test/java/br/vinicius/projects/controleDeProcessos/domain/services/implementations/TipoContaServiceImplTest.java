@@ -45,6 +45,7 @@ class TipoContaServiceImplTest {
 
         assertNotNull(response);
         assertEquals(1, response.size());
+        assertEquals(tipoContaDto, response.get(0));
         assertEquals(TipoContaDto.class, response.get(0).getClass());
         assertEquals(1L, response.get(0).getId());
         assertEquals("poupança", response.get(0).getNome());

@@ -94,4 +94,33 @@ public class Reclamante {
     @OneToMany(mappedBy = "reclamante_id")
     private List<Processo> processos;
 
+    public Reclamante(Long id, String nome, Date dataNascimento, String profissao, String ctps, String serieCtps,
+                      String rg, String orgaoRg, String cpf, String pis, String endereco, String cidade, String bairro,
+                      String uf, String cep, String banco, String agencia, String operacao, String conta, String contato,
+                      String email, Nacionalidade nacionalidade_id, EstadoCivil estadoCivil_id, TipoConta tipoConta_id) {
+        this.id = id;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.profissao = profissao;
+        this.ctps = ctps;
+        this.serieCtps = serieCtps;
+        this.rg = rg;
+        this.orgaoRg = orgaoRg;
+        this.cpf = cpf;
+        this.pis = pis;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.uf = uf;
+        this.cep = cep;
+        this.banco = banco;
+        this.agencia = agencia;
+        this.operacao = operacao;
+        this.conta = conta;
+        this.contato = contato;
+        this.email = email;
+        this.nacionalidade_id = nacionalidade_id;
+        this.estadoCivil_id = estadoCivil_id;
+        this.tipoConta_id = tipoConta_id;
+    }
 }

@@ -47,6 +47,7 @@ class NacionalidadeServiceImplTest {
         assertNotNull(response);
         assertEquals(1, response.size());
         assertEquals(NacionalidadeDto.class, response.get(0).getClass());
+        assertEquals(nacionalidadeDto, response.get(0));
         assertEquals(1L, response.get(0).getId());
         assertEquals("Brasileiro", response.get(0).getNome());
     }
