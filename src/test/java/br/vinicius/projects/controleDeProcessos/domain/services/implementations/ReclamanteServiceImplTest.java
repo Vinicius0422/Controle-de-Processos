@@ -42,11 +42,8 @@ class ReclamanteServiceImplTest {
     @Autowired
     @InjectMocks
     private ReclamanteServiceImpl reclamanteService;
-
-    List list = new ArrayList();
     private Reclamante reclamante;
     private ReclamanteDto reclamanteDto;
-
     private ReclamanteDto reclamanteDtoErros;
 
     @BeforeEach
@@ -90,7 +87,7 @@ class ReclamanteServiceImplTest {
 
     @Test
     void whenFindAllThenReturnAnEmptyList() {
-        when(reclamanteRepository.findAll()).thenReturn(list);
+        when(reclamanteRepository.findAll()).thenReturn(new ArrayList<>());
         List response = reclamanteService.getAllReclamantes();
 
         assertNotNull(response);
@@ -210,7 +207,7 @@ class ReclamanteServiceImplTest {
 
     @Test
     void whenFindByNomeContainsNonexistent() {
-        when(reclamanteRepository.findByNomeContains("Maria")).thenReturn(list);
+        when(reclamanteRepository.findByNomeContains("Maria")).thenReturn(new ArrayList<>());
         List response = reclamanteService.getByNome("Maria");
 
         assertNotNull(response);
@@ -226,7 +223,7 @@ class ReclamanteServiceImplTest {
         assertEquals(ResponseDefault.class, response.getClass());
         assertEquals(201, response.getStatusCode());
         assertEquals(1, response.getMensagens().size());
-        assertEquals("Criando com sucesso!", response.getMensagens().get(0));
+        assertEquals("Criado com sucesso!", response.getMensagens().get(0));
     }
 
     @Test
@@ -270,7 +267,7 @@ class ReclamanteServiceImplTest {
     }
 
     @Test
-    void whenValidacaoReclamanteDTOIsSuccessful() {
+    void whenValidacaoReclamanteDTOReturnOk() {
         when(reclamanteRepository.existsByCpf(reclamanteDto.getCpf())).thenReturn(false);
         when(reclamanteRepository.existsByRgAndOrgaoRg(reclamanteDto.getRg(), reclamanteDto.getOrgaoRg())).thenReturn(false);
         when(reclamanteRepository.existsByBancoAndAgenciaAndConta(reclamanteDto.getBanco(), reclamanteDto.getAgencia(), reclamanteDto.getConta())).thenReturn(false);
@@ -280,7 +277,7 @@ class ReclamanteServiceImplTest {
     }
 
     @Test
-    void whenValidacaoReclamanteDTOIsUnsuccessful() {
+    void whenValidacaoReclamanteDTOReturnError() {
         when(reclamanteRepository.existsByRgAndOrgaoRg(reclamanteDto.getRg(), reclamanteDto.getOrgaoRg())).thenReturn(true);
         when(reclamanteRepository.existsByBancoAndAgenciaAndConta(reclamanteDto.getBanco(), reclamanteDto.getAgencia(), reclamanteDto.getConta())).thenReturn(true);
         List<String> response = reclamanteService.validacaoReclamanteDTO(reclamanteDtoErros);
@@ -296,7 +293,7 @@ class ReclamanteServiceImplTest {
     }
 
     @Test
-    void whenValidacaoUpdateReclamanteDTOIsSuccessful() {
+    void whenValidacaoUpdateReclamanteDTOReturnOk() {
         when(reclamanteRepository.existsByCpf(reclamanteDto.getCpf())).thenReturn(true);
         when(reclamanteRepository.findByCpfEquals(reclamanteDto.getCpf())).thenReturn(1L);
         when(reclamanteRepository.existsByRgAndOrgaoRg(reclamanteDto.getRg(), reclamanteDto.getOrgaoRg())).thenReturn(true);
@@ -308,7 +305,7 @@ class ReclamanteServiceImplTest {
     }
 
     @Test
-    void whenValidacaoUpdateReclamanteDTOIsUnsuccessful() {
+    void whenValidacaoUpdateReclamanteDTOReturnError() {
         when(reclamanteRepository.existsByRgAndOrgaoRg(reclamanteDto.getRg(), reclamanteDto.getOrgaoRg())).thenReturn(true);
         when(reclamanteRepository.findByRgAndOrgaoRgEquals(reclamanteDto.getRg(), reclamanteDto.getOrgaoRg())).thenReturn(2L);
         when(reclamanteRepository.existsByBancoAndAgenciaAndConta(reclamanteDto.getBanco(), reclamanteDto.getAgencia(), reclamanteDto.getConta())).thenReturn(true);

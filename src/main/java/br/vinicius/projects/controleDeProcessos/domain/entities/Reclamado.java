@@ -22,7 +22,8 @@ public class Reclamado {
     private String nome;
 
     @Column(name = "tipo_pessoa")
-    private Enum tipoPessoa;
+    @Enumerated(EnumType.STRING)
+    private TipoPessoa tipoPessoa;
 
     @Column(length = 18, nullable = false, unique = true)
     private String cpf_cnpj;

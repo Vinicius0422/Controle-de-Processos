@@ -50,36 +50,26 @@ public class ReclamanteServiceImpl implements ReclamanteServiceIntfc {
     @Transactional
     public ResponseDefault saveReclamante(ReclamanteDto reclamanteDto) {
         // DataIntegrityViolationException, illegalargumentexception , ConstraintViolationException
-        ResponseDefault responseDefault = new ResponseDefault();
         var validacao = validacaoReclamanteDTO(reclamanteDto);
         if(!validacao.isEmpty()){
-            responseDefault.setStatusCode(409);
-            responseDefault.setMensagens(validacao);
-            return responseDefault;
+            return new ResponseDefault(409, validacao);
         }
         Reclamante reclamante = new Reclamante();
         BeanUtils.copyProperties(reclamanteDto, reclamante);
         reclamanteRepository.save(reclamante);
-        responseDefault.setStatusCode(201);
-        responseDefault.setMensagens(Collections.singletonList("Criando com sucesso!"));
-        return responseDefault;
+        return new ResponseDefault(201, Collections.singletonList("Criado com sucesso!"));
     }
 
     @Override
     public ResponseDefault updateReclamante(Long id, ReclamanteDto reclamanteDto) {
-        ResponseDefault responseDefault = new ResponseDefault();
         var validacao = validacaoUpdateReclamanteDTO(id, reclamanteDto);
         if(!validacao.isEmpty()){
-            responseDefault.setStatusCode(409);
-            responseDefault.setMensagens(validacao);
-            return responseDefault;
+            return new ResponseDefault(409, validacao);
         }
         Reclamante reclamanteUpdate = new Reclamante();
         BeanUtils.copyProperties(reclamanteDto, reclamanteUpdate);
         reclamanteRepository.save(reclamanteUpdate);
-        responseDefault.setStatusCode(200);
-        responseDefault.setMensagens(Collections.singletonList("Atualizado com sucesso!"));
-        return responseDefault;
+        return new ResponseDefault(200, Collections.singletonList("Atualizado com sucesso!"));
     }
 
     public List<String> validacaoReclamanteDTO(ReclamanteDto reclamanteDto){
