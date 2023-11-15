@@ -10,8 +10,8 @@ import java.util.Optional;
 @Repository
 public interface ReclamadoRepository extends JpaRepository<Reclamado, Long> {
 
-    Optional<Reclamado> findByCpf_Cnpj(String cpf_cnpj);
+    Optional<Reclamado> findByCpfCnpj(String cpf_cnpj);
     List<Reclamado> findByNomeContains(String nome);
-    boolean existsByCpf_Cnpj(String cpf_cnpj);
-    Long findByCpf_CnpjEquals(String cpf_cnpj);
+    boolean existsByCpfCnpj(String cpfCnpj);
+    Long findByCpfCnpjEquals(String cpf_cnpj);
 }

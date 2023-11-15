@@ -1,5 +1,6 @@
 package br.vinicius.projects.controleDeProcessos.domain.dtos.nacionalidade;
 
+import br.vinicius.projects.controleDeProcessos.domain.dtos.reclamante.ReclamanteDto;
 import br.vinicius.projects.controleDeProcessos.domain.entities.Nacionalidade;
 import br.vinicius.projects.controleDeProcessos.domain.entities.Reclamante;
 import jakarta.persistence.Column;

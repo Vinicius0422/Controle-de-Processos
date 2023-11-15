@@ -1,5 +1,6 @@
 package br.vinicius.projects.controleDeProcessos.domain.dtos.tipoConta;
 
+import br.vinicius.projects.controleDeProcessos.domain.dtos.reclamante.ReclamanteDto;
 import br.vinicius.projects.controleDeProcessos.domain.entities.Reclamante;
 import br.vinicius.projects.controleDeProcessos.domain.entities.TipoConta;
 import lombok.*;

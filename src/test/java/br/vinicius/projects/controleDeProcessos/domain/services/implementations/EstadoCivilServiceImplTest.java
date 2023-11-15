@@ -1,6 +1,7 @@
 package br.vinicius.projects.controleDeProcessos.domain.services.implementations;
 
 import br.vinicius.projects.controleDeProcessos.domain.dtos.estadoCivil.EstadoCivilDto;
+import br.vinicius.projects.controleDeProcessos.domain.dtos.localizacao.LocalizacaoDto;
 import br.vinicius.projects.controleDeProcessos.domain.entities.EstadoCivil;
 import br.vinicius.projects.controleDeProcessos.repositories.EstadoCivilRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -50,5 +52,13 @@ class EstadoCivilServiceImplTest {
         assertEquals(EstadoCivilDto.class, response.get(0).getClass());
         assertEquals(1L, response.get(0).getId());
         assertEquals("Solteiro", response.get(0).getNome());
+    }
+
+    @Test
+    void whenFindAllThenReturnAnListEmpty() {
+        when(estadoCivilRepository.findAll()).thenReturn(new ArrayList<>());
+        List<EstadoCivilDto> response = estadoCivilService.getAllEstadoCivil();
+
+        assertTrue(response.isEmpty());
     }
 }

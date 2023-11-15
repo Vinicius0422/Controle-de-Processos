@@ -3,7 +3,7 @@ package br.vinicius.projects.controleDeProcessos.domain.services.implementations
 import br.vinicius.projects.controleDeProcessos.domain.dtos.ResponseDefault;
 import br.vinicius.projects.controleDeProcessos.domain.dtos.reclamante.ReclamanteDto;
 import br.vinicius.projects.controleDeProcessos.domain.entities.Reclamante;
-import br.vinicius.projects.controleDeProcessos.domain.services.interfaces.ReclamanteServiceIntfc;
+import br.vinicius.projects.controleDeProcessos.domain.services.interfaces.ReclamanteService;
 import br.vinicius.projects.controleDeProcessos.repositories.ReclamanteRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ReclamanteServiceImpl implements ReclamanteServiceIntfc {
+public class ReclamanteServiceImpl implements ReclamanteService {
 
     @Autowired
     private ReclamanteRepository reclamanteRepository;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public interface ReclamanteServiceIntfc {
+public interface ReclamanteService {
 
     List<ReclamanteDto> getAllReclamantes();
 

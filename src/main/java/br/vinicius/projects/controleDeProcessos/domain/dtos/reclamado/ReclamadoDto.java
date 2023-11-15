@@ -34,7 +34,7 @@ public class ReclamadoDto {
         this.id = reclamado.getId();
         this.nome = reclamado.getNome();
         this.tipoPessoa = reclamado.getTipoPessoa();
-        this.cpf_cnpj = reclamado.getCpf_cnpj();
+        this.cpf_cnpj = reclamado.getCpfCnpj();
         this.endereco = reclamado.getEndereco();
         this.cidade = reclamado.getCidade();
         this.bairro = reclamado.getBairro();

@@ -18,10 +18,10 @@ public class Anotacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "data_anotacao")
+    @Column(name = "data_anotacao", nullable = false)
     private Date dataAnotacao;
 
-    @Column(name = "note")
+    @Column(name = "note", nullable = false)
     private String anotacao;
 
     @ManyToOne

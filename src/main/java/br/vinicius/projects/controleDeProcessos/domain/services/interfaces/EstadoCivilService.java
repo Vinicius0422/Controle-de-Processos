@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public interface EstadoCivilServiceIntfc {
+public interface EstadoCivilService {
 
     List<EstadoCivilDto> getAllEstadoCivil();
 }

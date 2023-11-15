@@ -27,11 +27,11 @@ import static org.mockito.Mockito.when;
 class ReclamadoServiceImplTest {
 
     @Mock
-    ReclamadoRepository reclamadoRepository;
+    private ReclamadoRepository reclamadoRepository;
 
     @Autowired
     @InjectMocks
-    ReclamadoServiceImpl reclamadoService;
+    private ReclamadoServiceImpl reclamadoService;
 
     private ReclamadoDto reclamadoDto;
     private Reclamado reclamado;
@@ -129,7 +129,7 @@ class ReclamadoServiceImplTest {
 
     @Test
     void whenFindByCpfOrCnpjExistent() {
-        when(reclamadoRepository.findByCpf_Cnpj("000.000.000-00")).thenReturn(Optional.ofNullable(reclamado));
+        when(reclamadoRepository.findByCpfCnpj("000.000.000-00")).thenReturn(Optional.ofNullable(reclamado));
         ReclamadoDto response = reclamadoService.getByCpfOuCnpj("000.000.000-00");
 
         assertNotNull(response);
@@ -154,7 +154,7 @@ class ReclamadoServiceImplTest {
 
     @Test
     void whenFindByCpfOrCnpjNonexistent() {
-        when(reclamadoRepository.findByCpf_Cnpj("000.000.000-01")).thenReturn(Optional.empty());
+        when(reclamadoRepository.findByCpfCnpj("000.000.000-01")).thenReturn(Optional.empty());
         ReclamadoDto response = reclamadoService.getByCpfOuCnpj("000.000.000-01");
 
         assertNull(response);
@@ -244,7 +244,7 @@ class ReclamadoServiceImplTest {
 
     @Test
     void whenValidacaoReclamadoDTOReturnOk() {
-        when(reclamadoRepository.existsByCpf_Cnpj(reclamadoDto.getCpf_cnpj())).thenReturn(false);
+        when(reclamadoRepository.existsByCpfCnpj(reclamadoDto.getCpf_cnpj())).thenReturn(false);
         List<String> response = reclamadoService.validacaoReclamadoDTO(reclamadoDto);
 
         assertTrue(response.isEmpty());
@@ -252,7 +252,7 @@ class ReclamadoServiceImplTest {
 
     @Test
     void whenValidacaoReclamanteDTOReturnError() {
-        when(reclamadoRepository.existsByCpf_Cnpj(reclamadoValidate.getCpf_cnpj())).thenReturn(true);
+        when(reclamadoRepository.existsByCpfCnpj(reclamadoValidate.getCpf_cnpj())).thenReturn(true);
         List<String> response =  reclamadoService.validacaoReclamadoDTO(reclamadoValidate);
 
         assertFalse(response.isEmpty());
@@ -263,8 +263,8 @@ class ReclamadoServiceImplTest {
 
     @Test
     void whenValidacaoUpdateReclamadoDTOReturnOk() {
-        when(reclamadoRepository.existsByCpf_Cnpj(reclamadoDto.getCpf_cnpj())).thenReturn(true);
-        when(reclamadoRepository.findByCpf_CnpjEquals(reclamadoDto.getCpf_cnpj())).thenReturn(1L);
+        when(reclamadoRepository.existsByCpfCnpj(reclamadoDto.getCpf_cnpj())).thenReturn(true);
+        when(reclamadoRepository.findByCpfCnpjEquals(reclamadoDto.getCpf_cnpj())).thenReturn(1L);
         List<String> response = reclamadoService.validacaoUpdateReclamadoDTO(1L, reclamadoDto);
 
         assertTrue(response.isEmpty());
@@ -272,8 +272,8 @@ class ReclamadoServiceImplTest {
 
     @Test
     void whenValidacaoUpdateReclamadoDTOReturnError() {
-        when(reclamadoRepository.existsByCpf_Cnpj(reclamadoDto.getCpf_cnpj())).thenReturn(true);
-        when(reclamadoRepository.findByCpf_CnpjEquals(reclamadoDto.getCpf_cnpj())).thenReturn(2L);
+        when(reclamadoRepository.existsByCpfCnpj(reclamadoDto.getCpf_cnpj())).thenReturn(true);
+        when(reclamadoRepository.findByCpfCnpjEquals(reclamadoDto.getCpf_cnpj())).thenReturn(2L);
         List<String> response = reclamadoService.validacaoUpdateReclamadoDTO(1L, reclamadoDto);
 
         assertFalse(response.isEmpty());

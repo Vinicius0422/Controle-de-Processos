@@ -25,8 +25,8 @@ public class Reclamado {
     @Enumerated(EnumType.STRING)
     private TipoPessoa tipoPessoa;
 
-    @Column(length = 18, nullable = false, unique = true)
-    private String cpf_cnpj;
+    @Column(length = 18, nullable = false, unique = true, name = "cpf_cnpj")
+    private String cpfCnpj;
 
     private String endereco;
 

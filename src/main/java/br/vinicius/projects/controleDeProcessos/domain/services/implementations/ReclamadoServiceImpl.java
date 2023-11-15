@@ -3,7 +3,7 @@ package br.vinicius.projects.controleDeProcessos.domain.services.implementations
 import br.vinicius.projects.controleDeProcessos.domain.dtos.ResponseDefault;
 import br.vinicius.projects.controleDeProcessos.domain.dtos.reclamado.ReclamadoDto;
 import br.vinicius.projects.controleDeProcessos.domain.entities.Reclamado;
-import br.vinicius.projects.controleDeProcessos.domain.services.interfaces.ReclamadoServiceIntfc;
+import br.vinicius.projects.controleDeProcessos.domain.services.interfaces.ReclamadoService;
 import br.vinicius.projects.controleDeProcessos.repositories.ReclamadoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class ReclamadoServiceImpl implements ReclamadoServiceIntfc {
+public class ReclamadoServiceImpl implements ReclamadoService {
 
     @Autowired
     private ReclamadoRepository reclamadoRepository;
@@ -35,7 +35,7 @@ public class ReclamadoServiceImpl implements ReclamadoServiceIntfc {
 
     @Override
     public ReclamadoDto getByCpfOuCnpj(String cpf_cnpj) {
-        Reclamado reclamado = reclamadoRepository.findByCpf_Cnpj(cpf_cnpj).orElse(null);
+        Reclamado reclamado = reclamadoRepository.findByCpfCnpj(cpf_cnpj).orElse(null);
         if(reclamado == null){
             return null;
         }
@@ -78,7 +78,7 @@ public class ReclamadoServiceImpl implements ReclamadoServiceIntfc {
         if(reclamadoDto.getCpf_cnpj().isBlank()){
             erros.add("O campo CPF/CNPJ é obrigatório!");
         }
-        if(reclamadoRepository.existsByCpf_Cnpj(reclamadoDto.getCpf_cnpj())){
+        if(reclamadoRepository.existsByCpfCnpj(reclamadoDto.getCpf_cnpj())){
             erros.add("CPF/CNPJ já cadastrado!");
         }
         return erros;
@@ -91,9 +91,9 @@ public class ReclamadoServiceImpl implements ReclamadoServiceIntfc {
         if(reclamadoDto.getCpf_cnpj().isBlank()){
             erros.add("O campo CPF/CNPJ é obrigatório!");
         }
-        boolean cpfCnpjCheck = reclamadoRepository.existsByCpf_Cnpj(reclamadoDto.getCpf_cnpj());
+        boolean cpfCnpjCheck = reclamadoRepository.existsByCpfCnpj(reclamadoDto.getCpf_cnpj());
         if(cpfCnpjCheck){
-            Long cpfCnpjId = reclamadoRepository.findByCpf_CnpjEquals(reclamadoDto.getCpf_cnpj());
+            Long cpfCnpjId = reclamadoRepository.findByCpfCnpjEquals(reclamadoDto.getCpf_cnpj());
             if(id != cpfCnpjId) {
                 erros.add("CPF/CNPJ já cadastrado!");
             }

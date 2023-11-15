@@ -1,5 +1,6 @@
 package br.vinicius.projects.controleDeProcessos.domain.dtos.estadoCivil;
 
+import br.vinicius.projects.controleDeProcessos.domain.dtos.reclamante.ReclamanteDto;
 import br.vinicius.projects.controleDeProcessos.domain.entities.EstadoCivil;
 import br.vinicius.projects.controleDeProcessos.domain.entities.Reclamante;
 import lombok.*;

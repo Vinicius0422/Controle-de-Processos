@@ -1,7 +1,7 @@
 package br.vinicius.projects.controleDeProcessos.domain.services.implementations;
 
 import br.vinicius.projects.controleDeProcessos.domain.dtos.tipoConta.TipoContaDto;
-import br.vinicius.projects.controleDeProcessos.domain.services.interfaces.TipoContaServiceIntfc;
+import br.vinicius.projects.controleDeProcessos.domain.services.interfaces.TipoContaService;
 import br.vinicius.projects.controleDeProcessos.repositories.TipoContaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TipoContaServiceImpl implements TipoContaServiceIntfc {
+public class TipoContaServiceImpl implements TipoContaService {
 
     @Autowired
     private TipoContaRepository tipoContaRepository;
